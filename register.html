@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" content="text/html" />
+        <title>用户注册</title>
+        <link type="text/css" rel="stylesheet" href="css/star.css" />
+        <link type="text/css" rel="stylesheet" href="css/register.css" />
+        <link rel="icon" type="image/x-icon" sizes="128x128" href="image/icon/user_128.ico" />
+        <link rel="shortcut icon" type="image/x-icon" sizes="128x128" href="image/icon/user_128.ico" />
+        <link rel="shortcut icon" type="image/x-icon" sizes="128x128" href="image/icon/favicon.ico" />
+		<link rel="apple-touch-icon" type="image/png" href="image/icon/user.png" />
+    </head>
+    <body>
+        <!-- 星空背景 -->
+        <div id="particles-js"></div>
+        <div class="white_content"></div>
+        <div id="error_message">
+            <label>验证错误，请正确填写信息</label>
+            <button aria-label="Close">X</button>
+        </div>
+        <div id="user_register">
+            <form name="register" id="register">
+                <label for="username">用户名 </label><br />
+                <input type="text" id="username" name="username" value="" tabindex="1" /><br />
+                <label for="email">邮箱 </label><br />
+                <input type="email" name="email" id="email" tabindex="2" /><br />
+                <label for="phone">手机号 </label><br />
+                <input type="text" name="phone" id="phone" tabindex="3" /><br />
+                <label for="password">密码 </label>&nbsp;&nbsp;
+                <label class="tips">至少<label class="tips_num">8个字符</label>，
+                    至少<label class="tips_num">一个数字</label>，<label class="tips_num">一个字母</label>
+                </label><br />
+                <input type="password" name="password" id="password" tabindex="4" /><br />
+                <label for="confirm_password">确认密码 </label><br />
+                <input type="password" name="confirm_password" id="confirm_password" tabindex="5" /><br />
+                <div id="registerBtn">
+                	<span id="qqLoginBtn"></span>
+                	<input type="submit" name="submit" id="submit" value="注册" tabindex="6" /><br />
+                </div>
+            </form>
+        </div>
+        <div id="login_account">
+            <p> Hava a accout ? &nbsp;&nbsp;&nbsp;
+                <a class="label_link" href="./login.html">登录</a>
+            </p>
+        </div>
+        <script type="text/javascript" src="./js/react.development.js"></script>
+        <script type="text/javascript" src="./js/react-dom.development.js"></script>
+        <script type="text/javascript" src="./js/babel.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript"  charset="utf-8"
+    		src="http://connect.qq.com/qc_jssdk.js"
+    		data-appid="101886875"
+    		data-redirecturi="http://qixqi.club:9080/vote/login.html"
+		></script>
+        <script type="text/javascript" src="./js/register.js"></script>
+        <script type="text/javascript" src="js/particles.min.js"></script>
+        <script type="text/javascript" src="js/star.js"></script>
+    </body>
+</html>

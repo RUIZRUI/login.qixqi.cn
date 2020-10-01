@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" content="text/html" />
+        <title>用户登录</title>
+        <link type="text/css" rel="stylesheet" href="css/star.css" />
+        <link type="text/css" rel="stylesheet" href="css/login.css" />
+        <link rel="icon" type="image/x-icon" sizes="128x128" href="image/icon/user_128.ico" />
+        <link rel="shortcut icon" type="image/x-icon" sizes="128x128" href="image/icon/user_128.ico" />
+        <link rel="shortcut icon" type="image/x-icon" sizes="128x128" href="image/icon/favicon.ico" />
+		<link rel="apple-touch-icon" type="image/png" href="image/icon/user.png" />
+    </head>
+    <body>
+        <!-- 星空背景 -->
+        <div id="particles-js"></div>
+        <div id="white_content"></div>
+        <div id="error_message">
+            <label>验证错误，请正确填写信息</label>
+            <button aria-label="Close">X</button>
+        </div>
+        <div id="user_login">
+            <form name="login" id="login">
+                <label for="login_field">用户ID</label><br />
+                <input type="number" id="login_field" name="login_field" value="" tabindex="1" /><br />
+                <label for="password" >密码</label>
+                <a class="label_link" href="./password_reset.html">忘记密码？</a><br />
+                <input type="password" id="password" name="password" tabindex="2" /><br />
+                <div id="loginBtn">
+					<span id="qqLoginBtn"></span>
+                	<input type="submit" name="submit" value="登录" tabindex="3" id="submit" /><br />
+                </div>
+            </form>
+        </div>
+        <div id="create_account">
+            <p> New to QixQi ? &nbsp;&nbsp;&nbsp;
+                <a class="label_link" href="./register.html">注册</a>
+            </p>
+        </div>
+		<script type="text/javascript" src="./js/react.development.js"></script>
+        <script type="text/javascript" src="./js/react-dom.development.js"></script>
+        <script type="text/javascript" src="./js/babel.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript"  charset="utf-8"
+    		src="http://connect.qq.com/qc_jssdk.js"
+    		data-appid="101886875"
+    		data-redirecturi="http://qixqi.club:9080/vote/login.html"
+    		data-callback="true"
+		></script>
+        <script type="text/javascript" src="./js/login.js"></script>
+        <script type="text/javascript" src="js/particles.min.js"></script>
+        <script type="text/javascript" src="js/star.js"></script>
+    </body>
+</html>
