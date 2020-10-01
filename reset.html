@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" content="text/html" />
+        <title>重设密码</title>
+        <link type="text/css" rel="stylesheet" href="css/reset.css" />
+        <link type="text/css" rel="stylesheet" href="css/star.css" />
+        <link rel="icon" type="image/x-icon" sizes="128x128" href="image/icon/user_128.ico" />
+        <link rel="shortcut icon" type="image/x-icon" sizes="128x128" href="image/icon/user_128.ico" />
+        <link rel="shortcut icon" type="image/x-icon" sizes="128x128" href="image/icon/favicon.ico" />
+		<link rel="apple-touch-icon" type="image/png" href="image/icon/user.png" />
+    </head>
+    <body>
+        <!-- 星空背景 -->
+        <div id="particles-js"></div>
+        <div id="white_content"></div>
+        <div id="error_message">
+            <label>验证错误，请正确填写信息</label>
+            <button aria-label="Close">X</button>
+        </div>
+
+        <div id="reset_password">
+            <form name="reset" method="POST">
+                <input type="email" name="email" id="email" style="display: none"/>
+                <label for="code">请输入验证码</label><br />
+                <input type="text" name="code" id="code" tabindex="1" /><br />
+                <label for="password">请输入密码</label><br />
+                <input type="password" name="password" id="password" tabindex="2" /><br />
+                <label for="confirm_password">请确认密码</label><br />
+                <input type="password" name="confirm_password" id="confirm_password" tabindex="3" /><br />
+                <input type="submit" name="submit" id="submit" value="重设" tabindex="4" /><br />
+            </form>
+        </div>
+
+        <div id="remember_password">
+            <p> Remember the password ? &nbsp;&nbsp;&nbsp;
+                <a class="label_link" href="./login.html">登录</a>
+            </p>
+        </div>
+        <script type="text/javascript" src="./js/react.development.js"></script>
+        <script type="text/javascript" src="./js/react-dom.development.js"></script>
+        <script type="text/javascript" src="./js/babel.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="./js/reset.js"></script>
+        <script type="text/javascript" src="./js/particles.min.js"></script>
+        <script type="text/javascript" src="./js/star.js"></script>
+    </body>
+</html>
+
+<!-- a17411419150580 -->

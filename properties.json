@@ -1,0 +1,4 @@
+{
+    "domain": "localhost",
+    "servletUrl": "http://localhost:8080/login/"
+}
