@@ -1,4 +1,4 @@
 {
-    "domain": "localhost",
-    "servletUrl": "http://localhost:8080/login/"
+    "domain": "qixqi.cn",
+    "servletUrl": "https://qixqi:8443/login/"
 }
