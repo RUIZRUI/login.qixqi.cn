@@ -21,6 +21,29 @@ $(document).ready(function(){
 		}
 		return true;
     }
+
+    // 解析url 获得 email
+    function getEmail(){
+        var url = window.location.href;
+        var index = url.indexOf('?email=');     // 第一个元素
+        if(index == -1){
+            index = url.indexOf('&email=');     // 非第一个元素
+            if (index == -1){
+                return '';
+            }
+        }
+        var real_email = url.substring(index + 7);
+        if (real_email.indexOf('&') != -1){
+            real_email = real_email.substring(0, real_email.indexOf('&'));
+        }
+        if(real_email.trim() == ''){
+            return '';
+        }else{
+            return real_email.trim();
+        }
+    }
+    // 填充email
+    $('#email').val(getEmail());
     
     // 关闭错误提示信息
     $('#error_message button:first').click(() => {
@@ -32,7 +55,34 @@ $(document).ready(function(){
         if (!checkProperties()){
             alert('网络延迟，配置文件尚未加载成功，请稍后重试！');
         } else if (checkEmail()){
-            // 发送验证请求
+            // 发送接收重设密码邮件的请求
+            var data = {
+                email: $('#email').val().trim()
+            };
+            $.ajax({
+                url: servletUrl + 'validate.do',
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                async: true,
+                success: function(data){
+                    var status = data.status;
+                    if (status === 100){
+                        alert('发送邮件成功，10分钟内有效');
+                        $(location).attr('href', 'reset.html?email=' + $('#email').val());
+                    } else if (status === 202){
+                        alert('邮箱尚未注册');
+                        $('#email').select();
+                    } else {
+                        alert('发送邮件失败，请查看日志');
+                        console.error(err.responseText);
+                    }
+                },
+                error: function(err){
+                    alert('发送邮件失败，请查看日志');
+                    console.error(err.responseText);
+                }
+            });
 
 
         } else{

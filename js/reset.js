@@ -52,12 +52,17 @@ $(document).ready(function() {
     // 解析url 获得 email
     function getEmail(){
         var url = window.location.href;
-        var index = url.indexOf('?email=');
+        var index = url.indexOf('?email=');     // 第一个元素
         if(index == -1){
-            return false;
+            index = url.indexOf('&email=');     // 非第一个元素
+            if (index == -1){
+                return false;
+            }
         }
         var real_email = url.substring(index + 7);
-        real_email = real_email.substring(0, real_email.indexOf('?'));
+        if (real_email.indexOf('&') != -1){
+            real_email = real_email.substring(0, real_email.indexOf('&'));
+        }
         if(real_email.trim() == ''){
             return false;
         }else{
@@ -66,16 +71,67 @@ $(document).ready(function() {
         }
     }
 
+    getEmail();
     // ajax 发送表单请求
     $('#reset').submit((event) => {
         if(!checkProperties()){
             alert('网络延迟，配置文件尚未加载成功，请稍后重试！');
-        } else if (checkCode() && checkPassword() && confirmPassword() && getEmail()){
-            // 发送修改密码请求
-
-
-
-            
+        } else if (checkCode() && checkPassword() && confirmPassword()){
+            // 判断邮箱是否缺失，并填写
+            if ($('#email').val() == ''){
+                var email = prompt('邮箱缺失，请输入后重新提交');
+                if (email.trim() == ''){
+                    return false;
+                }
+                $('#email').val(email);
+            }
+            // 发送重设密码请求
+            var data = {
+                code: $('#code').val().trim(),
+                email: $('#email').val().trim(),
+                password: $('#password').val().trim()
+            };
+            $.ajax({
+                url: servletUrl + 'reset.do',
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                async: true,
+                success: function(data){
+                    var status = data.status;
+                    if (status == 101){
+                        // 登录用户重设密码成功
+                        alert('重设密码成功');
+                    } else if (status === 100){
+                        // 游客重设密码成功
+                        alert('重设密码成功，即将跳转到登录页面');
+                        $(location).attr('href', 'login.html');
+                    } else if (status === 203){
+                        // 尚未发送验证码
+                        var choice = confirm('尚未向邮箱发送验证码，重新发送？');
+                        if (choice === true){
+                            $(location).attr('href', 'validate.html?email=' + $('#email').val().trim());
+                        }   
+                    } else if (status === 204){
+                        // 验证码不匹配
+                        alert('验证码不匹配');
+                        $('#code').select();
+                    } else if(status === 205){
+                        // 验证码失效
+                        var choice2 = confirm('验证码已过期，重新发送？');
+                        if (choice2 === true){
+                            $(location).attr('href', 'validate.html?email=' + $('#email').val().trim());
+                        }
+                    } else{
+                        alert('重设密码失败，请查看日志');
+                        console.error(status);
+                    }
+                },
+                error: function(err){
+                    alert('重设密码失败，请查看日志');
+                    console.error(err.responseText);
+                }
+            });
         } else {
             $('#error_message').css('display', 'block');
         }

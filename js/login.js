@@ -78,8 +78,8 @@ $(document).ready(function(){
 		} else if (checkIdentity() && checkPassword()){
 			// 发送登录请求
 			var data = {
-				id: $('#login_field').val(),
-				password: $('#password').val()
+				loginField: $('#login_field').val().trim(),
+				password: $('#password').val().trim()
 			};
 			$.ajax({
 				url: servletUrl + 'login.do',
@@ -88,19 +88,19 @@ $(document).ready(function(){
 				data: data,
 				async: true,
 				success: function(data){
-					alert(JSON.stringify(data));
-					var result = data.result;
-					if (result === 'success'){
+					var status = data.status;
+					if (status === 100){
+						// 登录成功
 						alert('登录成功，即将跳转');
-						// alert(data.user);
-						console.log(data.user);
-						$(location).attr('href', 'index.html');
+						$(location).attr('href', 'https://qixqi.cn');
 					} else{
-						alert('登录失败');
+						// 登录失败
+						alert('登录失败，请查看日志');
+						console.error(data);
 					}
 				},
 				error: function(err){
-					alert('登录失败');
+					alert('登录失败，请查看日志');
 					console.error(err.responseText);
 				}
 			});

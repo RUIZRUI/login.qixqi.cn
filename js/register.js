@@ -5,6 +5,7 @@ $(document).ready(function(){
 	$.getJSON('properties.json', (data) => {
 		servletUrl = data.servletUrl;
 	});
+	
 
 	// QQ登录按钮
 	QC.Login({
@@ -80,30 +81,29 @@ $(document).ready(function(){
 		} else if(checkUserName() && checkEmail() && checkPhone() && checkPassword() && confirmPassword()){
 	    	// 发送注册请求
 	    	var data = {
-	    		username: $('#username').val(),
-	    		email: $('#email').val(),
-	    		phone_num: $('#phone').val(),
-				password: $('#password').val(),
-				sex: 'u'	// 默认性别
+	    		username: $('#username').val().trim(),
+	    		email: $('#email').val().trim(),
+	    		phone: $('#phone').val().trim(),
+				password: $('#password').val().trim()
 	    	};
 	    	$.ajax({
-	    		url: servletUrl + 'Register',
+	    		url: servletUrl + 'register.do',
 	    		type: 'POST',
 	    		dataType: 'json',
 	    		data: data,
 	    		async: true,
 	    		success: function(data){
-					alert(data);
-	    			var result = data.result;
-	    			if (result === 'success'){
-	    				alert('注册成功，即将跳转到登录页面');
-	    				$(location).attr('href', 'login.html');
-	    			} else{
-	    				alert('注册失败：' + result);
-	    			}
+					var status = data.status;
+					if (status === 100){
+						alert('注册成功，即将跳转到登录页面');
+						$(location).attr('href', 'login.html');
+					} else {
+						alert('注册失败，请查看日志');
+						console.error(status);
+					}
 	    		},
 	    		error: function(err){
-	    			alert('注册失败');
+	    			alert('注册失败，请查看日志');
 	    			console.error(err.responseText);
 	    		}
 	    	});
