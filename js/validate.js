@@ -75,7 +75,7 @@ $(document).ready(function(){
                         $('#email').select();
                     } else {
                         alert('发送邮件失败，请查看日志');
-                        console.error(err.responseText);
+                        console.error(status);
                     }
                 },
                 error: function(err){
