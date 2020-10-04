@@ -25,9 +25,15 @@
                 <label for="password" >密码</label>
                 <a class="label_link" href="./validate.html">忘记密码？</a><br />
                 <input type="password" id="password" name="password" tabindex="2" /><br />
+                <input type="checkbox" id="remember" name="remember" tabindex="3" checked="checked" />
+                <label for="remember" class="remember_label">记住我</label><br />
                 <div id="loginBtn">
-					<span id="qqLoginBtn"></span>
-                	<input type="submit" name="submit" value="登录" tabindex="3" id="submit" /><br />
+                	<input type="submit" name="submit" value="登录" tabindex="4" id="submit" /><br />
+                </div>
+                <div id="otherLoginType">
+                    其他账号登录：
+                    <!-- <img src="image/logo/qq_logo.png" id="qqLoginImg" /> -->
+                    <span id="qqLoginBtn"></span>
                 </div>
             </form>
         </div>
@@ -42,7 +48,7 @@
         <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript"  charset="utf-8"
     		src="https://connect.qq.com/qc_jssdk.js"
-    		data-appid="101886875"
+    		data-appid="101909326"
     		data-redirecturi="https://qixqi.cn/login/login.html"
     		data-callback="true"
 		></script>
