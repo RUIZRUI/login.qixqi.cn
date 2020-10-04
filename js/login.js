@@ -8,12 +8,14 @@ $(document).ready(function(){
 
 	// QQ登录按钮
 	QC.Login({
-		btnId: 'qqLoginBtn'
+		btnId: 'qqLoginBtn',
+		scope: 'all',
+		size: 'A_M'
 	});
 	
 	// 获取当前登录用户基本信息
 	var paras = {
-	    oauth_consumer_key: 101886875
+	    oauth_consumer_key: 101909326
 	};
 	
 	QC.api('get_user_info', paras)

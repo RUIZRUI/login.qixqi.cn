@@ -42,7 +42,7 @@ body{
 #user_register{
     background-color: rgba(255, 255, 255, 0.1);
     width: 255px; 
-    height: 460px; 
+    height: 475px; 
     margin-left: 38.5%; 
     margin-top: 10px; 
     padding-top: 20px; 
@@ -117,17 +117,33 @@ body{
 	margin-top: 20px;
 }
 
-#qqLoginBtn{
-	margin-left: 24px;
-}
-
 #submit{ 
 	position: absolute;
-    margin-left: 40px; 
     background-color: #94d3a2; 
     border-color: rgba(27, 31, 35, .2);                    
-    width: 62px;
-    height: 24px;
+    width: 210px;
+    height: 30px;
+    font-size: 14px;
+    color: white;
+}
+
+#otherLoginType{
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+/* #qqLoginImg{
+    vertical-align: top;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+} */
+#qqLoginBtn img{
+    vertical-align: top;
+}
+
+#qqLoginBtn a{
+    margin-left: 0;
 }
 
 #login_account{

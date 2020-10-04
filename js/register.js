@@ -9,7 +9,9 @@ $(document).ready(function(){
 
 	// QQ登录按钮
 	QC.Login({
-		btnId: 'qqLoginBtn'
+		btnId: 'qqLoginBtn',
+		scope: 'all',
+		size: 'A_M'
 	});
 	
 	// 检测用户名
