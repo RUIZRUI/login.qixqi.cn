@@ -15,7 +15,7 @@ $(document).ready(function(){
 	
 	// 获取当前登录用户基本信息
 	var paras = {
-	    oauth_consumer_key: 101909334
+	    oauth_consumer_key: 101905453
 	};
 	
 	QC.api('get_user_info', paras)
