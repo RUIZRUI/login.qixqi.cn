@@ -94,7 +94,7 @@ $(document).ready(function(){
 					if (status === 100){
 						// 登录成功
 						alert('登录成功，即将跳转');
-						$(location).attr('href', 'https://qixqi.cn');
+						$(location).attr('href', 'https://ruizrui.cn');
 					} else{
 						// 登录失败
 						alert('登录失败，请查看日志');
